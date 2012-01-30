@@ -130,14 +130,19 @@ stella_process(void)
   if (get_dmx_universe_state(STELLA_UNIVERSE, stella_dmx_conn_id) ==
       DMX_NEWVALUES)
   {
-    uint8_t mode =
-      get_dmx_channel_slot(STELLA_UNIVERSE, STELLA_UNIVERSE_OFFSET,
-                           stella_dmx_conn_id);
     for (uint8_t i = 0; i < STELLA_CHANNELS; i++)
     {
-      stella_setValue(mode, i,
+      // dmx-storage channels to stella channels mapping is like this:
+      // intensity_1, intensity_2,..., intensity_n, mode_1, mode_2,..., mode_n
+      // with 1...n being the stella channel
+      // mode is how stella changes the intensity, see stella_set_function_e
+
+      stella_setValue(get_dmx_channel_slot(STELLA_UNIVERSE,
+                                           STELLA_UNIVERSE_OFFSET + STELLA_CHANNELS + i,
+                                           stella_dmx_conn_id),
+                      i,
                       get_dmx_channel_slot(STELLA_UNIVERSE,
-                                           STELLA_UNIVERSE_OFFSET + i + 1,
+                                           STELLA_UNIVERSE_OFFSET + i,
                                            stella_dmx_conn_id));
     }
   }
