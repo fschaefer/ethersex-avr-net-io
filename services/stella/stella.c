@@ -187,8 +187,6 @@ stella_setValue(const stella_set_function_e func, const uint8_t channel,
 
   switch (func)
   {
-    case STELLA_SET_NO_OP:
-      break;
     case STELLA_SET_IMMEDIATELY:
       stella_brightness[channel] = value;
       stella_fade[channel] = value;
