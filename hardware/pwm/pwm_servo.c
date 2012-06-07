@@ -44,9 +44,9 @@ void
 pwm_servo_init (void)
 {
     //set up fast pwm mode:  
-    #define WGM_CFG (1<<WGM00 | 1<<WGM01)	//fast pwm
-    #define COM_CFG (1<<COM01 | 0<<COM00)	//clr on match, set on max
-    #define CLK_CFG (0<<CS00 | 1<<CS01 | 1<<CS02)	//set up clock source
+    #define WGM_CFG (1<<WGM21 | 1<<WGM20)	//fast pwm
+    #define COM_CFG (1<<COM21 | 0<<COM20)	//clr on match, set on max
+    #define CLK_CFG (1<<CS22 | 1<<CS21 | 0<<CS20)	//set up clock source
     TCCR2 = WGM_CFG | COM_CFG | CLK_CFG;
 
     //set pin as output
@@ -69,9 +69,7 @@ setservo (uint8_t value)
 {
     #define CALC_1MS F_CPU/256/1000
     servo_pos = value;
-    //OCR2 = (value/10); // ->min = 13 max = 37 
-    //OCR2 = ((F_CPU/1024/1000)-1) + (value*(F_CPU/1024/1000)/255);
-    OCR2 = (CALC_1MS - 5 + (unsigned char) (((unsigned int) servo_pos * CALC_1MS) / 255));
+    OCR2 = CALC_1MS  + (servo_pos * CALC_1MS / 255);
 }
 
 /*
