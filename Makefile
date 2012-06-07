@@ -340,7 +340,7 @@ endif
 
 ##############################################################################
 ### Special case for MacOS X and FreeBSD
-CONFIG_SHELL := $(shell if [ x"`uname`" = x"Darwin" ] ; then echo /opt/local/bin/bash; \
+CONFIG_SHELL := $(shell if [ x"`uname`" = x"Darwin" ] ; then echo /usr/local/bin/bash; \
           elif [ x"`uname`" = x"FreeBSD" ]; then echo /usr/local/bin/bash; \
           elif [ -x "$$BASH" ]; then echo $$BASH; \
           elif [ -x /bin/bash ]; then echo /bin/bash; \
