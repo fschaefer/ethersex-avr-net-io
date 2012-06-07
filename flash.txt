@@ -1,2 +1,0 @@
-/Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/avrdude -C /Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr/etc/avrdude.conf -c avrispmkII -P usb -pm32 -U lfuse:w:0xBF:m -U hfuse:w:0xCB:m
-/Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/avrdude -C /Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr/etc/avrdude.conf -c avrispmkII -P usb -pm32 -U flash:w:ethersex.hex
