@@ -32,6 +32,17 @@
 int16_t
 parse_cmd_pwm_servo_set(char *cmd, char *output, uint16_t len)
 {
+  uint8_t pos = SERVO_STARTVALUE;
+  sscanf_P(cmd, PSTR("%i"), &pos);
+
+  setservo(pos);
+  return ECMD_FINAL(snprintf_P(output, len, PSTR("PWM servo to %i"), pos));
+}
+
+/*
+int16_t
+parse_cmd_pwm_servo_set(char *cmd, char *output, uint16_t len)
+{
   uint8_t servo = 0;
   uint8_t pos = SERVO_STARTVALUE;
   sscanf_P(cmd, PSTR("%hhu %hhu"), &servo, &pos);
@@ -65,7 +76,7 @@ parse_cmd_pwm_servo_dec(char *cmd, char *output, uint16_t len)
   servodec(servo);
   return ECMD_FINAL(snprintf_P(output, len, PSTR("PWM servo %i dec"),servo));
 }
-
+*/
 #endif  /* PWM_SUPPORT */
 
 /*
@@ -73,7 +84,6 @@ parse_cmd_pwm_servo_dec(char *cmd, char *output, uint16_t len)
   header(hardware/pwm/pwm_servo.h)
   block([[Servo_Ansteuerung|PWM Servo Control]])
   ecmd_feature(pwm_servo_set, "pwm servo_set",SERVONR POSITION, Set servo with SERVONR to POSITION)
-  ecmd_feature(pwm_servo_inc, "pwm servo_inc",SERVONR, Increment position of servo SERVONR)
-  ecmd_feature(pwm_servo_dec, "pwm servo_dec",SERVONR, Decrement position of servo SERVONR)
+  #ecmd_feature(pwm_servo_inc, "pwm servo_inc",SERVONR, Increment position of servo SERVONR)
+  #ecmd_feature(pwm_servo_dec, "pwm servo_dec",SERVONR, Decrement position of servo SERVONR)
 */
-
