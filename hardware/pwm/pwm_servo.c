@@ -43,14 +43,14 @@ volatile unsigned char servo_pos;
 void
 pwm_servo_init (void)
 {
-    //set up fast pwm mode:  
-    #define WGM_CFG (1<<WGM21 | 1<<WGM20)	//fast pwm
-    #define COM_CFG (1<<COM21 | 0<<COM20)	//clr on match, set on max
+    //set up pwm mode:  
+    #define WGM_CFG (1<<WGM21 | 1<<WGM20)	        //fast pwm
+    #define COM_CFG (1<<COM21 | 0<<COM20)	        //clr on match, set on max
     #define CLK_CFG (1<<CS22 | 1<<CS21 | 0<<CS20)	//set up clock source
     TCCR2 = WGM_CFG | COM_CFG | CLK_CFG;
 
     //set pin as output
-    DDRD |= (1 << 7);
+    DDRD |= (1 << PD7);
 
     //initialise
     setservo (127);
