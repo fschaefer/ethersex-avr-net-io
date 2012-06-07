@@ -1,0 +1,25 @@
+# PIN | IN/OUT | When active? | Name
+#-----+--------+--------------+----------------
+PA0	INPUT	HIGH		input1
+PA1	INPUT	HIGH		input2
+PA2	INPUT	HIGH		input3
+PA3	INPUT	HIGH		input4
+
+PB0	OUTPUT	HIGH		external7
+PB3	OUTPUT	HIGH		external8
+
+PC0	OUTPUT	HIGH		output1
+PC1	OUTPUT	HIGH		output2
+PC2	OUTPUT	HIGH		output3
+PC3	OUTPUT	HIGH		output4
+PC4	OUTPUT	HIGH		output5
+PC5	OUTPUT	HIGH		output6
+PC6	OUTPUT	HIGH		output7
+PC7	OUTPUT	HIGH		output8
+
+PD2	OUTPUT	HIGH		external1
+PD3	OUTPUT	HIGH		external2
+PD4	OUTPUT	HIGH		external3
+PD5	OUTPUT	HIGH		external4
+PD6	OUTPUT	HIGH		external5
+PD7	OUTPUT	HIGH		external6
